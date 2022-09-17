@@ -1,11 +1,12 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import { CryptoTable, MainLayout } from '../components';
 
 const Home: NextPage = () => {
   return (
-    <h1 className=" text-red-500 font-bold underline">
-      Crypto Tracker
-    </h1>
-  )
-}
+    <MainLayout>
+      <CryptoTable />
+    </MainLayout>
+  );
+};
 
-export default Home
+export default Home;
