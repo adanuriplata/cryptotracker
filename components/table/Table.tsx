@@ -10,19 +10,30 @@ interface TableProps {
 
 export const Table: FC<TableProps> = ({ data }) => {
   return (
-    <div className="w-full my-8 p-4 mx-auto">
-      <table className="table-auto border-separate border-spacing-10">
-        <thead className="uppercase">
+    <div className="container">
+      <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+        <thead className="bg-gray-100 dark:bg-amber-500">
           <tr>
-            <th className="text-left">token</th>
-            <th>price</th>
-            <th>24 H</th>
+            <th
+              scope="col"
+              className="py-3 px-6 text-base font-medium tracking-wider text-left text-white "
+            >
+              Token
+            </th>
+            <th
+            scope="col"
+            className="py-3 px-6 text-base font-medium tracking-wider text-left text-white "
+            >Price</th>
+            <th
+            scope="col"
+            className="py-3 px-6 text-base font-medium tracking-wider text-left text-white "
+            >24 H</th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody>
           {data?.map((item: coinMarket) => (
-            <tr key={item.id}>
-              <td>
+            <tr key={item.id} className="hover:bg-gray-400 dark:hover:bg-gray-900">
+              <td className='py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                 <div className="flex space-x-2 items-center">
                   <div>
                     <Image
@@ -38,24 +49,24 @@ export const Table: FC<TableProps> = ({ data }) => {
                   </div>
                 </div>
               </td>
-              <td>${item.current_price} USD </td>
+              <td className='py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white'>${item.current_price} USD </td>
               <td
-                className={
+                className={`${
                   item.price_change_percentage_24h > 0
                     ? 'text-green-600'
                     : 'text-red-600'
-                }
+                } py-4 px-6 text-sm font-medium whitespace-nowrap`}
               >
-                <div className=' inline px-2'>
-                <FontAwesomeIcon
-                  icon={
-                    item.price_change_percentage_24h > 0
-                    ? faArrowUp
-                    : faArrowDown
-                  }
+                <div className="inline px-2">
+                  <FontAwesomeIcon
+                    icon={
+                      item.price_change_percentage_24h > 0
+                        ? faArrowUp
+                        : faArrowDown
+                    }
                   />
-                  </div>
-                { item.price_change_percentage_24h.toFixed(2)}%
+                </div>
+                {item.price_change_percentage_24h.toFixed(2)}%
               </td>
             </tr>
           ))}
