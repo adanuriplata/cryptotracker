@@ -3,6 +3,7 @@ import { coinMarket } from '../../types/coinMarket';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
+import { currency } from '../../utils/';
 
 interface TableProps {
   data: coinMarket[];
@@ -21,25 +22,32 @@ export const Table: FC<TableProps> = ({ data }) => {
               Token
             </th>
             <th
-            scope="col"
-            className="py-3 px-6 text-base font-medium tracking-wider text-left text-white "
-            >Price</th>
+              scope="col"
+              className="py-3 px-6 text-base font-medium tracking-wider text-right text-white "
+            >
+              Price
+            </th>
             <th
-            scope="col"
-            className="py-3 px-6 text-base font-medium tracking-wider text-left text-white "
-            >24 H</th>
+              scope="col"
+              className="py-3 px-6 text-base font-medium tracking-wider text-right text-white "
+            >
+              24 H
+            </th>
           </tr>
         </thead>
         <tbody>
           {data?.map((item: coinMarket) => (
-            <tr key={item.id} className="hover:bg-gray-400 dark:hover:bg-gray-900">
-              <td className='py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+            <tr
+              key={item.id}
+              className="hover:bg-gray-400 dark:hover:bg-gray-900"
+            >
+              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <div className="flex space-x-2 items-center">
                   <div>
                     <Image
                       src={item.image}
-                      width="25"
-                      height="25"
+                      width="28"
+                      height="28"
                       alt={item.name}
                     />
                   </div>
@@ -49,13 +57,15 @@ export const Table: FC<TableProps> = ({ data }) => {
                   </div>
                 </div>
               </td>
-              <td className='py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white'>${item.current_price} USD </td>
+              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white text-right">
+                {currency(item.current_price)} USD{' '}
+              </td>
               <td
                 className={`${
                   item.price_change_percentage_24h > 0
                     ? 'text-green-600'
                     : 'text-red-600'
-                } py-4 px-6 text-sm font-medium whitespace-nowrap`}
+                } py-4 px-6 text-sm font-medium whitespace-nowrap text-right`}
               >
                 <div className="inline px-2">
                   <FontAwesomeIcon
