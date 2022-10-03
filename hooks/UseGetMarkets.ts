@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { coinMarket } from "../types/coinMarket";
 
 export const UseGetMarkets = () => {
 
-  const [markets, setMarkets] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [markets, setMarkets] = useState<coinMarket[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect( () => {
 
