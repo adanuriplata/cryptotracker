@@ -1,3 +1,3 @@
 export const Footer = () => {
-  return <div className="text-center text-sm">Hecho con 💪🏾 @AdanUriPlata</div>;
+  return <div className="text-center text-sm pb-5">Hecho con 💪🏾 @AdanUriPlata</div>;
 };
