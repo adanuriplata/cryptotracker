@@ -11,9 +11,9 @@ interface TableProps {
 
 export const Table: FC<TableProps> = ({ data }) => {
   return (
-    <div className="container">
+    <div className="container bg-slate-800 shadow-md my-6 rounded">
       <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-        <thead className="bg-gray-100 dark:bg-amber-500">
+        <thead className="bg-gray-100 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded">
           <tr>
             <th
               scope="col"
@@ -39,7 +39,7 @@ export const Table: FC<TableProps> = ({ data }) => {
           {data?.map((item: coinMarket) => (
             <tr
               key={item.id}
-              className="hover:bg-gray-400 dark:hover:bg-gray-900"
+              className="hover:bg-gray-400 dark:hover:bg-orange-900"
             >
               <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <div className="flex space-x-2 items-center">
